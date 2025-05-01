@@ -13,9 +13,10 @@ class  PipeQLParser : public antlr4::Parser {
 public:
   enum {
     T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
-    T__7 = 8, T__8 = 9, T__9 = 10, T__10 = 11, T__11 = 12, T__12 = 13, T__13 = 14, 
-    T__14 = 15, T__15 = 16, T__16 = 17, T__17 = 18, T__18 = 19, IDENTIFIER = 20, 
-    STRING = 21, NUMBER = 22, WS = 23
+    T__7 = 8, FROM = 9, SELECT = 10, WHERE = 11, ORDER_BY = 12, UNION = 13, 
+    INTERSECT = 14, EXCEPT = 15, ASSERT = 16, LIMIT = 17, OFFSET = 18, AS = 19, 
+    BETWEEN = 20, AND = 21, PIPE_OPERATOR = 22, IDENTIFIER = 23, STRING = 24, 
+    NUMBER = 25, WS = 26
   };
 
   enum {
@@ -87,6 +88,7 @@ public:
   public:
     FromClauseContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *FROM();
     antlr4::tree::TerminalNode *IDENTIFIER();
     AliasClauseContext *aliasClause();
 
@@ -103,6 +105,7 @@ public:
   public:
     PipeOperatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *PIPE_OPERATOR();
     SelectOperatorContext *selectOperator();
     WhereOperatorContext *whereOperator();
     OrderByOperatorContext *orderByOperator();
@@ -125,6 +128,7 @@ public:
   public:
     SelectOperatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *SELECT();
     std::vector<SelectExpressionContext *> selectExpression();
     SelectExpressionContext* selectExpression(size_t i);
 
@@ -141,6 +145,7 @@ public:
   public:
     WhereOperatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *WHERE();
     BooleanExpressionContext *booleanExpression();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -156,6 +161,7 @@ public:
   public:
     OrderByOperatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *ORDER_BY();
     std::vector<OrderExpressionContext *> orderExpression();
     OrderExpressionContext* orderExpression(size_t i);
 
@@ -172,6 +178,7 @@ public:
   public:
     UnionOperatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *UNION();
     std::vector<QueryContext *> query();
     QueryContext* query(size_t i);
 
@@ -188,6 +195,7 @@ public:
   public:
     IntersectOperatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *INTERSECT();
     std::vector<QueryContext *> query();
     QueryContext* query(size_t i);
 
@@ -204,6 +212,7 @@ public:
   public:
     ExceptOperatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *EXCEPT();
     std::vector<QueryContext *> query();
     QueryContext* query(size_t i);
 
@@ -220,6 +229,7 @@ public:
   public:
     AssertOperatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *ASSERT();
     BooleanExpressionContext *booleanExpression();
     std::vector<PayloadExpressionContext *> payloadExpression();
     PayloadExpressionContext* payloadExpression(size_t i);
@@ -237,6 +247,7 @@ public:
   public:
     LimitClauseContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LIMIT();
     antlr4::tree::TerminalNode *NUMBER();
     OffsetClauseContext *offsetClause();
 
@@ -253,6 +264,7 @@ public:
   public:
     OffsetClauseContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *OFFSET();
     antlr4::tree::TerminalNode *NUMBER();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -299,7 +311,10 @@ public:
   public:
     BooleanExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    ExpressionContext *expression();
+    std::vector<ExpressionContext *> expression();
+    ExpressionContext* expression(size_t i);
+    antlr4::tree::TerminalNode *BETWEEN();
+    antlr4::tree::TerminalNode *AND();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -380,6 +395,7 @@ public:
   public:
     AliasClauseContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *AS();
     antlr4::tree::TerminalNode *IDENTIFIER();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;

@@ -13,9 +13,10 @@ class  PipeQLLexer : public antlr4::Lexer {
 public:
   enum {
     T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
-    T__7 = 8, T__8 = 9, T__9 = 10, T__10 = 11, T__11 = 12, T__12 = 13, T__13 = 14, 
-    T__14 = 15, T__15 = 16, T__16 = 17, T__17 = 18, T__18 = 19, IDENTIFIER = 20, 
-    STRING = 21, NUMBER = 22, WS = 23
+    T__7 = 8, FROM = 9, SELECT = 10, WHERE = 11, ORDER_BY = 12, UNION = 13, 
+    INTERSECT = 14, EXCEPT = 15, ASSERT = 16, LIMIT = 17, OFFSET = 18, AS = 19, 
+    BETWEEN = 20, AND = 21, PIPE_OPERATOR = 22, IDENTIFIER = 23, STRING = 24, 
+    NUMBER = 25, WS = 26
   };
 
   explicit PipeQLLexer(antlr4::CharStream *input);

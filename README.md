@@ -21,5 +21,5 @@ conan build . -s build_type=Debug --build missing
 ## Example
 
 ```bash
-./build/Debug/pipeql "FROM customers |> SELECT customer_id, customer_name"
+./build/Debug/pipeql "FROM customers |> SELECT customer_id, customer_name" json
 ```

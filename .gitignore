@@ -2,3 +2,5 @@
 .antlr
 .vscode
 build
+CMakeCache
+CMakeFiles

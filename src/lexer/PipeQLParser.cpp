@@ -60,17 +60,18 @@ void pipeqlParserInitialize() {
       "functionCall", "literal", "aliasClause"
     },
     std::vector<std::string>{
-      "", "'FROM'", "'|>'", "'SELECT'", "','", "'WHERE'", "'ORDER BY'", 
-      "'UNION'", "'ALL'", "'DISTINCT'", "'('", "')'", "'INTERSECT'", "'EXCEPT'", 
-      "'ASSERT'", "'LIMIT'", "'OFFSET'", "'AS'", "'ASC'", "'DESC'"
+      "", "','", "'ALL'", "'DISTINCT'", "'('", "')'", "'AS'", "'ASC'", "'DESC'", 
+      "", "", "", "", "", "", "", "", "", "", "", "", "", "'|>'"
     },
     std::vector<std::string>{
-      "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 
-      "", "", "", "IDENTIFIER", "STRING", "NUMBER", "WS"
+      "", "", "", "", "", "", "", "", "", "FROM", "SELECT", "WHERE", "ORDER_BY", 
+      "UNION", "INTERSECT", "EXCEPT", "ASSERT", "LIMIT", "OFFSET", "AS", 
+      "BETWEEN", "AND", "PIPE_OPERATOR", "IDENTIFIER", "STRING", "NUMBER", 
+      "WS"
     }
   );
   static const int32_t serializedATNSegment[] = {
-  	4,1,23,191,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
+  	4,1,26,198,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
   	7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,
   	14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,1,0,1,0,5,0,43,8,
   	0,10,0,12,0,46,9,0,1,0,1,0,1,1,1,1,1,1,3,1,53,8,1,1,2,1,2,1,2,1,2,1,2,
@@ -81,54 +82,56 @@ void pipeqlParserInitialize() {
   	7,1,8,1,8,1,8,1,8,1,8,1,8,5,8,126,8,8,10,8,12,8,129,9,8,1,8,1,8,1,9,1,
   	9,1,9,1,9,5,9,137,8,9,10,9,12,9,140,9,9,1,10,1,10,1,10,3,10,145,8,10,
   	1,11,1,11,1,11,1,12,1,12,1,12,3,12,153,8,12,1,13,1,13,3,13,157,8,13,1,
-  	14,1,14,1,15,1,15,1,16,1,16,1,16,1,16,1,16,1,16,1,16,3,16,170,8,16,1,
-  	17,1,17,1,17,1,17,1,17,5,17,177,8,17,10,17,12,17,180,9,17,3,17,182,8,
-  	17,1,17,1,17,1,18,1,18,1,19,1,19,1,19,1,19,0,0,20,0,2,4,6,8,10,12,14,
-  	16,18,20,22,24,26,28,30,32,34,36,38,0,3,1,0,8,9,1,0,18,19,1,0,21,22,193,
-  	0,40,1,0,0,0,2,49,1,0,0,0,4,70,1,0,0,0,6,72,1,0,0,0,8,81,1,0,0,0,10,84,
-  	1,0,0,0,12,93,1,0,0,0,14,106,1,0,0,0,16,119,1,0,0,0,18,132,1,0,0,0,20,
-  	141,1,0,0,0,22,146,1,0,0,0,24,149,1,0,0,0,26,154,1,0,0,0,28,158,1,0,0,
-  	0,30,160,1,0,0,0,32,169,1,0,0,0,34,171,1,0,0,0,36,185,1,0,0,0,38,187,
-  	1,0,0,0,40,44,3,2,1,0,41,43,3,4,2,0,42,41,1,0,0,0,43,46,1,0,0,0,44,42,
-  	1,0,0,0,44,45,1,0,0,0,45,47,1,0,0,0,46,44,1,0,0,0,47,48,5,0,0,1,48,1,
-  	1,0,0,0,49,50,5,1,0,0,50,52,5,20,0,0,51,53,3,38,19,0,52,51,1,0,0,0,52,
-  	53,1,0,0,0,53,3,1,0,0,0,54,55,5,2,0,0,55,71,3,6,3,0,56,57,5,2,0,0,57,
-  	71,3,8,4,0,58,59,5,2,0,0,59,71,3,10,5,0,60,61,5,2,0,0,61,71,3,12,6,0,
-  	62,63,5,2,0,0,63,71,3,14,7,0,64,65,5,2,0,0,65,71,3,16,8,0,66,67,5,2,0,
-  	0,67,71,3,18,9,0,68,69,5,2,0,0,69,71,3,20,10,0,70,54,1,0,0,0,70,56,1,
-  	0,0,0,70,58,1,0,0,0,70,60,1,0,0,0,70,62,1,0,0,0,70,64,1,0,0,0,70,66,1,
-  	0,0,0,70,68,1,0,0,0,71,5,1,0,0,0,72,73,5,3,0,0,73,78,3,24,12,0,74,75,
-  	5,4,0,0,75,77,3,24,12,0,76,74,1,0,0,0,77,80,1,0,0,0,78,76,1,0,0,0,78,
-  	79,1,0,0,0,79,7,1,0,0,0,80,78,1,0,0,0,81,82,5,5,0,0,82,83,3,28,14,0,83,
-  	9,1,0,0,0,84,85,5,6,0,0,85,90,3,26,13,0,86,87,5,4,0,0,87,89,3,26,13,0,
-  	88,86,1,0,0,0,89,92,1,0,0,0,90,88,1,0,0,0,90,91,1,0,0,0,91,11,1,0,0,0,
-  	92,90,1,0,0,0,93,94,5,7,0,0,94,95,7,0,0,0,95,96,5,10,0,0,96,101,3,0,0,
-  	0,97,98,5,4,0,0,98,100,3,0,0,0,99,97,1,0,0,0,100,103,1,0,0,0,101,99,1,
-  	0,0,0,101,102,1,0,0,0,102,104,1,0,0,0,103,101,1,0,0,0,104,105,5,11,0,
-  	0,105,13,1,0,0,0,106,107,5,12,0,0,107,108,7,0,0,0,108,109,5,10,0,0,109,
-  	114,3,0,0,0,110,111,5,4,0,0,111,113,3,0,0,0,112,110,1,0,0,0,113,116,1,
-  	0,0,0,114,112,1,0,0,0,114,115,1,0,0,0,115,117,1,0,0,0,116,114,1,0,0,0,
-  	117,118,5,11,0,0,118,15,1,0,0,0,119,120,5,13,0,0,120,121,7,0,0,0,121,
-  	122,5,10,0,0,122,127,3,0,0,0,123,124,5,4,0,0,124,126,3,0,0,0,125,123,
-  	1,0,0,0,126,129,1,0,0,0,127,125,1,0,0,0,127,128,1,0,0,0,128,130,1,0,0,
-  	0,129,127,1,0,0,0,130,131,5,11,0,0,131,17,1,0,0,0,132,133,5,14,0,0,133,
-  	138,3,28,14,0,134,135,5,4,0,0,135,137,3,30,15,0,136,134,1,0,0,0,137,140,
-  	1,0,0,0,138,136,1,0,0,0,138,139,1,0,0,0,139,19,1,0,0,0,140,138,1,0,0,
-  	0,141,142,5,15,0,0,142,144,5,22,0,0,143,145,3,22,11,0,144,143,1,0,0,0,
-  	144,145,1,0,0,0,145,21,1,0,0,0,146,147,5,16,0,0,147,148,5,22,0,0,148,
-  	23,1,0,0,0,149,152,3,32,16,0,150,151,5,17,0,0,151,153,5,20,0,0,152,150,
-  	1,0,0,0,152,153,1,0,0,0,153,25,1,0,0,0,154,156,3,32,16,0,155,157,7,1,
-  	0,0,156,155,1,0,0,0,156,157,1,0,0,0,157,27,1,0,0,0,158,159,3,32,16,0,
-  	159,29,1,0,0,0,160,161,3,32,16,0,161,31,1,0,0,0,162,170,5,20,0,0,163,
-  	170,3,36,18,0,164,170,3,34,17,0,165,166,5,10,0,0,166,167,3,32,16,0,167,
-  	168,5,11,0,0,168,170,1,0,0,0,169,162,1,0,0,0,169,163,1,0,0,0,169,164,
-  	1,0,0,0,169,165,1,0,0,0,170,33,1,0,0,0,171,172,5,20,0,0,172,181,5,10,
-  	0,0,173,178,3,32,16,0,174,175,5,4,0,0,175,177,3,32,16,0,176,174,1,0,0,
-  	0,177,180,1,0,0,0,178,176,1,0,0,0,178,179,1,0,0,0,179,182,1,0,0,0,180,
-  	178,1,0,0,0,181,173,1,0,0,0,181,182,1,0,0,0,182,183,1,0,0,0,183,184,5,
-  	11,0,0,184,35,1,0,0,0,185,186,7,2,0,0,186,37,1,0,0,0,187,188,5,17,0,0,
-  	188,189,5,20,0,0,189,39,1,0,0,0,15,44,52,70,78,90,101,114,127,138,144,
-  	152,156,169,178,181
+  	14,1,14,1,14,1,14,1,14,1,14,1,14,3,14,166,8,14,1,15,1,15,1,16,1,16,1,
+  	16,1,16,1,16,1,16,1,16,3,16,177,8,16,1,17,1,17,1,17,1,17,1,17,5,17,184,
+  	8,17,10,17,12,17,187,9,17,3,17,189,8,17,1,17,1,17,1,18,1,18,1,19,1,19,
+  	1,19,1,19,0,0,20,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,
+  	38,0,3,1,0,2,3,1,0,7,8,1,0,24,25,201,0,40,1,0,0,0,2,49,1,0,0,0,4,70,1,
+  	0,0,0,6,72,1,0,0,0,8,81,1,0,0,0,10,84,1,0,0,0,12,93,1,0,0,0,14,106,1,
+  	0,0,0,16,119,1,0,0,0,18,132,1,0,0,0,20,141,1,0,0,0,22,146,1,0,0,0,24,
+  	149,1,0,0,0,26,154,1,0,0,0,28,165,1,0,0,0,30,167,1,0,0,0,32,176,1,0,0,
+  	0,34,178,1,0,0,0,36,192,1,0,0,0,38,194,1,0,0,0,40,44,3,2,1,0,41,43,3,
+  	4,2,0,42,41,1,0,0,0,43,46,1,0,0,0,44,42,1,0,0,0,44,45,1,0,0,0,45,47,1,
+  	0,0,0,46,44,1,0,0,0,47,48,5,0,0,1,48,1,1,0,0,0,49,50,5,9,0,0,50,52,5,
+  	23,0,0,51,53,3,38,19,0,52,51,1,0,0,0,52,53,1,0,0,0,53,3,1,0,0,0,54,55,
+  	5,22,0,0,55,71,3,6,3,0,56,57,5,22,0,0,57,71,3,8,4,0,58,59,5,22,0,0,59,
+  	71,3,10,5,0,60,61,5,22,0,0,61,71,3,12,6,0,62,63,5,22,0,0,63,71,3,14,7,
+  	0,64,65,5,22,0,0,65,71,3,16,8,0,66,67,5,22,0,0,67,71,3,18,9,0,68,69,5,
+  	22,0,0,69,71,3,20,10,0,70,54,1,0,0,0,70,56,1,0,0,0,70,58,1,0,0,0,70,60,
+  	1,0,0,0,70,62,1,0,0,0,70,64,1,0,0,0,70,66,1,0,0,0,70,68,1,0,0,0,71,5,
+  	1,0,0,0,72,73,5,10,0,0,73,78,3,24,12,0,74,75,5,1,0,0,75,77,3,24,12,0,
+  	76,74,1,0,0,0,77,80,1,0,0,0,78,76,1,0,0,0,78,79,1,0,0,0,79,7,1,0,0,0,
+  	80,78,1,0,0,0,81,82,5,11,0,0,82,83,3,28,14,0,83,9,1,0,0,0,84,85,5,12,
+  	0,0,85,90,3,26,13,0,86,87,5,1,0,0,87,89,3,26,13,0,88,86,1,0,0,0,89,92,
+  	1,0,0,0,90,88,1,0,0,0,90,91,1,0,0,0,91,11,1,0,0,0,92,90,1,0,0,0,93,94,
+  	5,13,0,0,94,95,7,0,0,0,95,96,5,4,0,0,96,101,3,0,0,0,97,98,5,1,0,0,98,
+  	100,3,0,0,0,99,97,1,0,0,0,100,103,1,0,0,0,101,99,1,0,0,0,101,102,1,0,
+  	0,0,102,104,1,0,0,0,103,101,1,0,0,0,104,105,5,5,0,0,105,13,1,0,0,0,106,
+  	107,5,14,0,0,107,108,7,0,0,0,108,109,5,4,0,0,109,114,3,0,0,0,110,111,
+  	5,1,0,0,111,113,3,0,0,0,112,110,1,0,0,0,113,116,1,0,0,0,114,112,1,0,0,
+  	0,114,115,1,0,0,0,115,117,1,0,0,0,116,114,1,0,0,0,117,118,5,5,0,0,118,
+  	15,1,0,0,0,119,120,5,15,0,0,120,121,7,0,0,0,121,122,5,4,0,0,122,127,3,
+  	0,0,0,123,124,5,1,0,0,124,126,3,0,0,0,125,123,1,0,0,0,126,129,1,0,0,0,
+  	127,125,1,0,0,0,127,128,1,0,0,0,128,130,1,0,0,0,129,127,1,0,0,0,130,131,
+  	5,5,0,0,131,17,1,0,0,0,132,133,5,16,0,0,133,138,3,28,14,0,134,135,5,1,
+  	0,0,135,137,3,30,15,0,136,134,1,0,0,0,137,140,1,0,0,0,138,136,1,0,0,0,
+  	138,139,1,0,0,0,139,19,1,0,0,0,140,138,1,0,0,0,141,142,5,17,0,0,142,144,
+  	5,25,0,0,143,145,3,22,11,0,144,143,1,0,0,0,144,145,1,0,0,0,145,21,1,0,
+  	0,0,146,147,5,18,0,0,147,148,5,25,0,0,148,23,1,0,0,0,149,152,3,32,16,
+  	0,150,151,5,6,0,0,151,153,5,23,0,0,152,150,1,0,0,0,152,153,1,0,0,0,153,
+  	25,1,0,0,0,154,156,3,32,16,0,155,157,7,1,0,0,156,155,1,0,0,0,156,157,
+  	1,0,0,0,157,27,1,0,0,0,158,166,3,32,16,0,159,160,3,32,16,0,160,161,5,
+  	20,0,0,161,162,3,32,16,0,162,163,5,21,0,0,163,164,3,32,16,0,164,166,1,
+  	0,0,0,165,158,1,0,0,0,165,159,1,0,0,0,166,29,1,0,0,0,167,168,3,32,16,
+  	0,168,31,1,0,0,0,169,177,5,23,0,0,170,177,3,36,18,0,171,177,3,34,17,0,
+  	172,173,5,4,0,0,173,174,3,32,16,0,174,175,5,5,0,0,175,177,1,0,0,0,176,
+  	169,1,0,0,0,176,170,1,0,0,0,176,171,1,0,0,0,176,172,1,0,0,0,177,33,1,
+  	0,0,0,178,179,5,23,0,0,179,188,5,4,0,0,180,185,3,32,16,0,181,182,5,1,
+  	0,0,182,184,3,32,16,0,183,181,1,0,0,0,184,187,1,0,0,0,185,183,1,0,0,0,
+  	185,186,1,0,0,0,186,189,1,0,0,0,187,185,1,0,0,0,188,180,1,0,0,0,188,189,
+  	1,0,0,0,189,190,1,0,0,0,190,191,5,5,0,0,191,35,1,0,0,0,192,193,7,2,0,
+  	0,193,37,1,0,0,0,194,195,5,19,0,0,195,196,5,23,0,0,196,39,1,0,0,0,16,
+  	44,52,70,78,90,101,114,127,138,144,152,156,165,176,185,188
   };
   staticData->serializedATN = antlr4::atn::SerializedATNView(serializedATNSegment, sizeof(serializedATNSegment) / sizeof(serializedATNSegment[0]));
 
@@ -243,7 +246,7 @@ PipeQLParser::QueryContext* PipeQLParser::query() {
     setState(44);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == PipeQLParser::T__1) {
+    while (_la == PipeQLParser::PIPE_OPERATOR) {
       setState(41);
       pipeOperator();
       setState(46);
@@ -267,6 +270,10 @@ PipeQLParser::QueryContext* PipeQLParser::query() {
 
 PipeQLParser::FromClauseContext::FromClauseContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* PipeQLParser::FromClauseContext::FROM() {
+  return getToken(PipeQLParser::FROM, 0);
 }
 
 tree::TerminalNode* PipeQLParser::FromClauseContext::IDENTIFIER() {
@@ -317,14 +324,14 @@ PipeQLParser::FromClauseContext* PipeQLParser::fromClause() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(49);
-    match(PipeQLParser::T__0);
+    match(PipeQLParser::FROM);
     setState(50);
     match(PipeQLParser::IDENTIFIER);
     setState(52);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == PipeQLParser::T__16) {
+    if (_la == PipeQLParser::AS) {
       setState(51);
       aliasClause();
     }
@@ -343,6 +350,10 @@ PipeQLParser::FromClauseContext* PipeQLParser::fromClause() {
 
 PipeQLParser::PipeOperatorContext::PipeOperatorContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* PipeQLParser::PipeOperatorContext::PIPE_OPERATOR() {
+  return getToken(PipeQLParser::PIPE_OPERATOR, 0);
 }
 
 PipeQLParser::SelectOperatorContext* PipeQLParser::PipeOperatorContext::selectOperator() {
@@ -420,7 +431,7 @@ PipeQLParser::PipeOperatorContext* PipeQLParser::pipeOperator() {
     case 1: {
       enterOuterAlt(_localctx, 1);
       setState(54);
-      match(PipeQLParser::T__1);
+      match(PipeQLParser::PIPE_OPERATOR);
       setState(55);
       selectOperator();
       break;
@@ -429,7 +440,7 @@ PipeQLParser::PipeOperatorContext* PipeQLParser::pipeOperator() {
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(56);
-      match(PipeQLParser::T__1);
+      match(PipeQLParser::PIPE_OPERATOR);
       setState(57);
       whereOperator();
       break;
@@ -438,7 +449,7 @@ PipeQLParser::PipeOperatorContext* PipeQLParser::pipeOperator() {
     case 3: {
       enterOuterAlt(_localctx, 3);
       setState(58);
-      match(PipeQLParser::T__1);
+      match(PipeQLParser::PIPE_OPERATOR);
       setState(59);
       orderByOperator();
       break;
@@ -447,7 +458,7 @@ PipeQLParser::PipeOperatorContext* PipeQLParser::pipeOperator() {
     case 4: {
       enterOuterAlt(_localctx, 4);
       setState(60);
-      match(PipeQLParser::T__1);
+      match(PipeQLParser::PIPE_OPERATOR);
       setState(61);
       unionOperator();
       break;
@@ -456,7 +467,7 @@ PipeQLParser::PipeOperatorContext* PipeQLParser::pipeOperator() {
     case 5: {
       enterOuterAlt(_localctx, 5);
       setState(62);
-      match(PipeQLParser::T__1);
+      match(PipeQLParser::PIPE_OPERATOR);
       setState(63);
       intersectOperator();
       break;
@@ -465,7 +476,7 @@ PipeQLParser::PipeOperatorContext* PipeQLParser::pipeOperator() {
     case 6: {
       enterOuterAlt(_localctx, 6);
       setState(64);
-      match(PipeQLParser::T__1);
+      match(PipeQLParser::PIPE_OPERATOR);
       setState(65);
       exceptOperator();
       break;
@@ -474,7 +485,7 @@ PipeQLParser::PipeOperatorContext* PipeQLParser::pipeOperator() {
     case 7: {
       enterOuterAlt(_localctx, 7);
       setState(66);
-      match(PipeQLParser::T__1);
+      match(PipeQLParser::PIPE_OPERATOR);
       setState(67);
       assertOperator();
       break;
@@ -483,7 +494,7 @@ PipeQLParser::PipeOperatorContext* PipeQLParser::pipeOperator() {
     case 8: {
       enterOuterAlt(_localctx, 8);
       setState(68);
-      match(PipeQLParser::T__1);
+      match(PipeQLParser::PIPE_OPERATOR);
       setState(69);
       limitClause();
       break;
@@ -507,6 +518,10 @@ PipeQLParser::PipeOperatorContext* PipeQLParser::pipeOperator() {
 
 PipeQLParser::SelectOperatorContext::SelectOperatorContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* PipeQLParser::SelectOperatorContext::SELECT() {
+  return getToken(PipeQLParser::SELECT, 0);
 }
 
 std::vector<PipeQLParser::SelectExpressionContext *> PipeQLParser::SelectOperatorContext::selectExpression() {
@@ -557,15 +572,15 @@ PipeQLParser::SelectOperatorContext* PipeQLParser::selectOperator() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(72);
-    match(PipeQLParser::T__2);
+    match(PipeQLParser::SELECT);
     setState(73);
     selectExpression();
     setState(78);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == PipeQLParser::T__3) {
+    while (_la == PipeQLParser::T__0) {
       setState(74);
-      match(PipeQLParser::T__3);
+      match(PipeQLParser::T__0);
       setState(75);
       selectExpression();
       setState(80);
@@ -587,6 +602,10 @@ PipeQLParser::SelectOperatorContext* PipeQLParser::selectOperator() {
 
 PipeQLParser::WhereOperatorContext::WhereOperatorContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* PipeQLParser::WhereOperatorContext::WHERE() {
+  return getToken(PipeQLParser::WHERE, 0);
 }
 
 PipeQLParser::BooleanExpressionContext* PipeQLParser::WhereOperatorContext::booleanExpression() {
@@ -632,7 +651,7 @@ PipeQLParser::WhereOperatorContext* PipeQLParser::whereOperator() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(81);
-    match(PipeQLParser::T__4);
+    match(PipeQLParser::WHERE);
     setState(82);
     booleanExpression();
    
@@ -650,6 +669,10 @@ PipeQLParser::WhereOperatorContext* PipeQLParser::whereOperator() {
 
 PipeQLParser::OrderByOperatorContext::OrderByOperatorContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* PipeQLParser::OrderByOperatorContext::ORDER_BY() {
+  return getToken(PipeQLParser::ORDER_BY, 0);
 }
 
 std::vector<PipeQLParser::OrderExpressionContext *> PipeQLParser::OrderByOperatorContext::orderExpression() {
@@ -700,15 +723,15 @@ PipeQLParser::OrderByOperatorContext* PipeQLParser::orderByOperator() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(84);
-    match(PipeQLParser::T__5);
+    match(PipeQLParser::ORDER_BY);
     setState(85);
     orderExpression();
     setState(90);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == PipeQLParser::T__3) {
+    while (_la == PipeQLParser::T__0) {
       setState(86);
-      match(PipeQLParser::T__3);
+      match(PipeQLParser::T__0);
       setState(87);
       orderExpression();
       setState(92);
@@ -730,6 +753,10 @@ PipeQLParser::OrderByOperatorContext* PipeQLParser::orderByOperator() {
 
 PipeQLParser::UnionOperatorContext::UnionOperatorContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* PipeQLParser::UnionOperatorContext::UNION() {
+  return getToken(PipeQLParser::UNION, 0);
 }
 
 std::vector<PipeQLParser::QueryContext *> PipeQLParser::UnionOperatorContext::query() {
@@ -780,12 +807,12 @@ PipeQLParser::UnionOperatorContext* PipeQLParser::unionOperator() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(93);
-    match(PipeQLParser::T__6);
+    match(PipeQLParser::UNION);
     setState(94);
     _la = _input->LA(1);
-    if (!(_la == PipeQLParser::T__7
+    if (!(_la == PipeQLParser::T__1
 
-    || _la == PipeQLParser::T__8)) {
+    || _la == PipeQLParser::T__2)) {
     _errHandler->recoverInline(this);
     }
     else {
@@ -793,15 +820,15 @@ PipeQLParser::UnionOperatorContext* PipeQLParser::unionOperator() {
       consume();
     }
     setState(95);
-    match(PipeQLParser::T__9);
+    match(PipeQLParser::T__3);
     setState(96);
     query();
     setState(101);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == PipeQLParser::T__3) {
+    while (_la == PipeQLParser::T__0) {
       setState(97);
-      match(PipeQLParser::T__3);
+      match(PipeQLParser::T__0);
       setState(98);
       query();
       setState(103);
@@ -809,7 +836,7 @@ PipeQLParser::UnionOperatorContext* PipeQLParser::unionOperator() {
       _la = _input->LA(1);
     }
     setState(104);
-    match(PipeQLParser::T__10);
+    match(PipeQLParser::T__4);
    
   }
   catch (RecognitionException &e) {
@@ -825,6 +852,10 @@ PipeQLParser::UnionOperatorContext* PipeQLParser::unionOperator() {
 
 PipeQLParser::IntersectOperatorContext::IntersectOperatorContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* PipeQLParser::IntersectOperatorContext::INTERSECT() {
+  return getToken(PipeQLParser::INTERSECT, 0);
 }
 
 std::vector<PipeQLParser::QueryContext *> PipeQLParser::IntersectOperatorContext::query() {
@@ -875,12 +906,12 @@ PipeQLParser::IntersectOperatorContext* PipeQLParser::intersectOperator() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(106);
-    match(PipeQLParser::T__11);
+    match(PipeQLParser::INTERSECT);
     setState(107);
     _la = _input->LA(1);
-    if (!(_la == PipeQLParser::T__7
+    if (!(_la == PipeQLParser::T__1
 
-    || _la == PipeQLParser::T__8)) {
+    || _la == PipeQLParser::T__2)) {
     _errHandler->recoverInline(this);
     }
     else {
@@ -888,15 +919,15 @@ PipeQLParser::IntersectOperatorContext* PipeQLParser::intersectOperator() {
       consume();
     }
     setState(108);
-    match(PipeQLParser::T__9);
+    match(PipeQLParser::T__3);
     setState(109);
     query();
     setState(114);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == PipeQLParser::T__3) {
+    while (_la == PipeQLParser::T__0) {
       setState(110);
-      match(PipeQLParser::T__3);
+      match(PipeQLParser::T__0);
       setState(111);
       query();
       setState(116);
@@ -904,7 +935,7 @@ PipeQLParser::IntersectOperatorContext* PipeQLParser::intersectOperator() {
       _la = _input->LA(1);
     }
     setState(117);
-    match(PipeQLParser::T__10);
+    match(PipeQLParser::T__4);
    
   }
   catch (RecognitionException &e) {
@@ -920,6 +951,10 @@ PipeQLParser::IntersectOperatorContext* PipeQLParser::intersectOperator() {
 
 PipeQLParser::ExceptOperatorContext::ExceptOperatorContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* PipeQLParser::ExceptOperatorContext::EXCEPT() {
+  return getToken(PipeQLParser::EXCEPT, 0);
 }
 
 std::vector<PipeQLParser::QueryContext *> PipeQLParser::ExceptOperatorContext::query() {
@@ -970,12 +1005,12 @@ PipeQLParser::ExceptOperatorContext* PipeQLParser::exceptOperator() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(119);
-    match(PipeQLParser::T__12);
+    match(PipeQLParser::EXCEPT);
     setState(120);
     _la = _input->LA(1);
-    if (!(_la == PipeQLParser::T__7
+    if (!(_la == PipeQLParser::T__1
 
-    || _la == PipeQLParser::T__8)) {
+    || _la == PipeQLParser::T__2)) {
     _errHandler->recoverInline(this);
     }
     else {
@@ -983,15 +1018,15 @@ PipeQLParser::ExceptOperatorContext* PipeQLParser::exceptOperator() {
       consume();
     }
     setState(121);
-    match(PipeQLParser::T__9);
+    match(PipeQLParser::T__3);
     setState(122);
     query();
     setState(127);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == PipeQLParser::T__3) {
+    while (_la == PipeQLParser::T__0) {
       setState(123);
-      match(PipeQLParser::T__3);
+      match(PipeQLParser::T__0);
       setState(124);
       query();
       setState(129);
@@ -999,7 +1034,7 @@ PipeQLParser::ExceptOperatorContext* PipeQLParser::exceptOperator() {
       _la = _input->LA(1);
     }
     setState(130);
-    match(PipeQLParser::T__10);
+    match(PipeQLParser::T__4);
    
   }
   catch (RecognitionException &e) {
@@ -1015,6 +1050,10 @@ PipeQLParser::ExceptOperatorContext* PipeQLParser::exceptOperator() {
 
 PipeQLParser::AssertOperatorContext::AssertOperatorContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* PipeQLParser::AssertOperatorContext::ASSERT() {
+  return getToken(PipeQLParser::ASSERT, 0);
 }
 
 PipeQLParser::BooleanExpressionContext* PipeQLParser::AssertOperatorContext::booleanExpression() {
@@ -1069,15 +1108,15 @@ PipeQLParser::AssertOperatorContext* PipeQLParser::assertOperator() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(132);
-    match(PipeQLParser::T__13);
+    match(PipeQLParser::ASSERT);
     setState(133);
     booleanExpression();
     setState(138);
     _errHandler->sync(this);
     _la = _input->LA(1);
-    while (_la == PipeQLParser::T__3) {
+    while (_la == PipeQLParser::T__0) {
       setState(134);
-      match(PipeQLParser::T__3);
+      match(PipeQLParser::T__0);
       setState(135);
       payloadExpression();
       setState(140);
@@ -1099,6 +1138,10 @@ PipeQLParser::AssertOperatorContext* PipeQLParser::assertOperator() {
 
 PipeQLParser::LimitClauseContext::LimitClauseContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* PipeQLParser::LimitClauseContext::LIMIT() {
+  return getToken(PipeQLParser::LIMIT, 0);
 }
 
 tree::TerminalNode* PipeQLParser::LimitClauseContext::NUMBER() {
@@ -1149,14 +1192,14 @@ PipeQLParser::LimitClauseContext* PipeQLParser::limitClause() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(141);
-    match(PipeQLParser::T__14);
+    match(PipeQLParser::LIMIT);
     setState(142);
     match(PipeQLParser::NUMBER);
     setState(144);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == PipeQLParser::T__15) {
+    if (_la == PipeQLParser::OFFSET) {
       setState(143);
       offsetClause();
     }
@@ -1175,6 +1218,10 @@ PipeQLParser::LimitClauseContext* PipeQLParser::limitClause() {
 
 PipeQLParser::OffsetClauseContext::OffsetClauseContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* PipeQLParser::OffsetClauseContext::OFFSET() {
+  return getToken(PipeQLParser::OFFSET, 0);
 }
 
 tree::TerminalNode* PipeQLParser::OffsetClauseContext::NUMBER() {
@@ -1220,7 +1267,7 @@ PipeQLParser::OffsetClauseContext* PipeQLParser::offsetClause() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(146);
-    match(PipeQLParser::T__15);
+    match(PipeQLParser::OFFSET);
     setState(147);
     match(PipeQLParser::NUMBER);
    
@@ -1293,9 +1340,9 @@ PipeQLParser::SelectExpressionContext* PipeQLParser::selectExpression() {
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == PipeQLParser::T__16) {
+    if (_la == PipeQLParser::T__5) {
       setState(150);
-      match(PipeQLParser::T__16);
+      match(PipeQLParser::T__5);
       setState(151);
       match(PipeQLParser::IDENTIFIER);
     }
@@ -1365,14 +1412,14 @@ PipeQLParser::OrderExpressionContext* PipeQLParser::orderExpression() {
     _errHandler->sync(this);
 
     _la = _input->LA(1);
-    if (_la == PipeQLParser::T__17
+    if (_la == PipeQLParser::T__6
 
-    || _la == PipeQLParser::T__18) {
+    || _la == PipeQLParser::T__7) {
       setState(155);
       _la = _input->LA(1);
-      if (!(_la == PipeQLParser::T__17
+      if (!(_la == PipeQLParser::T__6
 
-      || _la == PipeQLParser::T__18)) {
+      || _la == PipeQLParser::T__7)) {
       _errHandler->recoverInline(this);
       }
       else {
@@ -1397,8 +1444,20 @@ PipeQLParser::BooleanExpressionContext::BooleanExpressionContext(ParserRuleConte
   : ParserRuleContext(parent, invokingState) {
 }
 
-PipeQLParser::ExpressionContext* PipeQLParser::BooleanExpressionContext::expression() {
-  return getRuleContext<PipeQLParser::ExpressionContext>(0);
+std::vector<PipeQLParser::ExpressionContext *> PipeQLParser::BooleanExpressionContext::expression() {
+  return getRuleContexts<PipeQLParser::ExpressionContext>();
+}
+
+PipeQLParser::ExpressionContext* PipeQLParser::BooleanExpressionContext::expression(size_t i) {
+  return getRuleContext<PipeQLParser::ExpressionContext>(i);
+}
+
+tree::TerminalNode* PipeQLParser::BooleanExpressionContext::BETWEEN() {
+  return getToken(PipeQLParser::BETWEEN, 0);
+}
+
+tree::TerminalNode* PipeQLParser::BooleanExpressionContext::AND() {
+  return getToken(PipeQLParser::AND, 0);
 }
 
 
@@ -1438,9 +1497,34 @@ PipeQLParser::BooleanExpressionContext* PipeQLParser::booleanExpression() {
     exitRule();
   });
   try {
-    enterOuterAlt(_localctx, 1);
-    setState(158);
-    expression();
+    setState(165);
+    _errHandler->sync(this);
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 12, _ctx)) {
+    case 1: {
+      enterOuterAlt(_localctx, 1);
+      setState(158);
+      expression();
+      break;
+    }
+
+    case 2: {
+      enterOuterAlt(_localctx, 2);
+      setState(159);
+      expression();
+      setState(160);
+      match(PipeQLParser::BETWEEN);
+      setState(161);
+      expression();
+      setState(162);
+      match(PipeQLParser::AND);
+      setState(163);
+      expression();
+      break;
+    }
+
+    default:
+      break;
+    }
    
   }
   catch (RecognitionException &e) {
@@ -1500,7 +1584,7 @@ PipeQLParser::PayloadExpressionContext* PipeQLParser::payloadExpression() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(160);
+    setState(167);
     expression();
    
   }
@@ -1572,38 +1656,38 @@ PipeQLParser::ExpressionContext* PipeQLParser::expression() {
     exitRule();
   });
   try {
-    setState(169);
+    setState(176);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 12, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 13, _ctx)) {
     case 1: {
       enterOuterAlt(_localctx, 1);
-      setState(162);
+      setState(169);
       match(PipeQLParser::IDENTIFIER);
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
-      setState(163);
+      setState(170);
       literal();
       break;
     }
 
     case 3: {
       enterOuterAlt(_localctx, 3);
-      setState(164);
+      setState(171);
       functionCall();
       break;
     }
 
     case 4: {
       enterOuterAlt(_localctx, 4);
-      setState(165);
-      match(PipeQLParser::T__9);
-      setState(166);
+      setState(172);
+      match(PipeQLParser::T__3);
+      setState(173);
       expression();
-      setState(167);
-      match(PipeQLParser::T__10);
+      setState(174);
+      match(PipeQLParser::T__4);
       break;
     }
 
@@ -1678,33 +1762,33 @@ PipeQLParser::FunctionCallContext* PipeQLParser::functionCall() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(171);
+    setState(178);
     match(PipeQLParser::IDENTIFIER);
-    setState(172);
-    match(PipeQLParser::T__9);
-    setState(181);
+    setState(179);
+    match(PipeQLParser::T__3);
+    setState(188);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 7341056) != 0)) {
-      setState(173);
+      ((1ULL << _la) & 58720272) != 0)) {
+      setState(180);
       expression();
-      setState(178);
+      setState(185);
       _errHandler->sync(this);
       _la = _input->LA(1);
-      while (_la == PipeQLParser::T__3) {
-        setState(174);
-        match(PipeQLParser::T__3);
-        setState(175);
+      while (_la == PipeQLParser::T__0) {
+        setState(181);
+        match(PipeQLParser::T__0);
+        setState(182);
         expression();
-        setState(180);
+        setState(187);
         _errHandler->sync(this);
         _la = _input->LA(1);
       }
     }
-    setState(183);
-    match(PipeQLParser::T__10);
+    setState(190);
+    match(PipeQLParser::T__4);
    
   }
   catch (RecognitionException &e) {
@@ -1769,7 +1853,7 @@ PipeQLParser::LiteralContext* PipeQLParser::literal() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(185);
+    setState(192);
     _la = _input->LA(1);
     if (!(_la == PipeQLParser::STRING
 
@@ -1795,6 +1879,10 @@ PipeQLParser::LiteralContext* PipeQLParser::literal() {
 
 PipeQLParser::AliasClauseContext::AliasClauseContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* PipeQLParser::AliasClauseContext::AS() {
+  return getToken(PipeQLParser::AS, 0);
 }
 
 tree::TerminalNode* PipeQLParser::AliasClauseContext::IDENTIFIER() {
@@ -1839,9 +1927,9 @@ PipeQLParser::AliasClauseContext* PipeQLParser::aliasClause() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(187);
-    match(PipeQLParser::T__16);
-    setState(188);
+    setState(194);
+    match(PipeQLParser::AS);
+    setState(195);
     match(PipeQLParser::IDENTIFIER);
    
   }
