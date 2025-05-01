@@ -4,11 +4,8 @@
 #include "lexer/PipeQLLexer.h"
 #include "lexer/PipeQLParser.h"
 
-// Based on:
-// https://www.codeproject.com/Articles/5308882/ANTLR-Parsing-and-Cplusplus-Part-1-Introduction
-
 int main(int argc, const char *argv[]) {
-  // Provide the input text in a stream
+  // Check if a query is provided as input
   if (argc < 2) {
     std::cerr << "Usage: " << argv[0] << " '<query>'" << std::endl;
     return 1;
@@ -29,9 +26,12 @@ int main(int argc, const char *argv[]) {
   // Create a parser from the token stream
   PipeQLParser parser(&tokens);
 
-  // Display the parse tree
-  antlr4::tree::ParseTree *tree = parser.query();
-  std::cout << tree->toStringTree(&parser) << std::endl;
+  // Parse the query and get the parse tree
+  auto *tree = parser.query();
+
+  // Print the parse tree using ANTLR's toStringTree method
+  std::cout << "Parse Tree (AST):" << std::endl;
+  std::cout << tree->toStringTree(&parser, true) << std::endl;
 
   return 0;
 }

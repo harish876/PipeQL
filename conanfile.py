@@ -25,7 +25,7 @@ class AntLR4Example(ConanFile):
 
     def package_info(self):
         self.cpp_info.system_libs = ["dl", "rt", "pthread"]
-        
+
     def build(self):
         cmake = CMake(self)
         cmake.configure()
