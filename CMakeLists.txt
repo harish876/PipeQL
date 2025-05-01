@@ -5,6 +5,8 @@ project (pipeql)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(antlr4-runtime REQUIRED)
 find_package(antlr4 REQUIRED)
+# Add nlohmann_json package
+find_package(nlohmann_json 3.10.5 REQUIRED)
 
 if(DEFINED antlr4_PACKAGE_FOLDER_DEBUG)
   set(antlr4Path ${antlr4_PACKAGE_FOLDER_DEBUG})
@@ -27,7 +29,8 @@ set(SOURCES_STAGE
     src/main.cpp
     src/lexer/PipeQLLexer.cpp
     src/lexer/PipeQLParser.cpp
-    )
+    src/lexer/PipeQLVisitor.cpp  # Add this line
+)
 
 
 message(STATUS "CMAKE_PREFIX_PATH: ${CMAKE_PREFIX_PATH}")
@@ -45,7 +48,7 @@ add_custom_target(
   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src
   SOURCES ${PROJECT_SOURCE_DIR}/src/spec/PipeQL.g4)
 
-target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS} antlr4_static -pthread )
+  target_link_libraries(${PROJECT_NAME} PRIVATE ${CONAN_LIBS} antlr4_static nlohmann_json::nlohmann_json -pthread)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
 

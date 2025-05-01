@@ -15,6 +15,7 @@ class AntLR4Example(ConanFile):
         "antlr4-cppruntime/4.13.1",
         "antlr4/4.13.1",
         "openjdk/21.0.1",
+        "nlohmann_json/3.10.5"
     )
 
     def layout(self):

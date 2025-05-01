@@ -1,0 +1,20 @@
+[
+    {
+        "customer_id": 1,
+        "customer_name": "John",
+        "customer_age": 30,
+        "total_sales": 100
+    },
+    {
+        "customer_id": 2,
+        "customer_name": "Harbaugh",
+        "customer_age": 40,
+        "total_sales": 10
+    },
+    {
+        "customer_id": 3,
+        "customer_name": "Harish",
+        "customer_age": 30,
+        "total_sales": 50
+    }
+]

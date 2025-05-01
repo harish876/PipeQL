@@ -20,6 +20,6 @@ conan build . -s build_type=Debug --build missing
 
 ## Example
 
-```
-./build/Debug/pipeql "FROM sales_data |> SELECT id AS sales_id, amount |> ORDER BY amount DESC |> LIMIT 10 OFFSET 5"
+```bash
+./build/Debug/pipeql "FROM customers |> SELECT customer_id, customer_name"
 ```
