@@ -13,10 +13,10 @@ class  PipeQLParser : public antlr4::Parser {
 public:
   enum {
     T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
-    T__7 = 8, FROM = 9, SELECT = 10, WHERE = 11, ORDER_BY = 12, UNION = 13, 
-    INTERSECT = 14, EXCEPT = 15, ASSERT = 16, LIMIT = 17, OFFSET = 18, AS = 19, 
-    BETWEEN = 20, AND = 21, PIPE_OPERATOR = 22, IDENTIFIER = 23, STRING = 24, 
-    NUMBER = 25, WS = 26
+    T__7 = 8, T__8 = 9, T__9 = 10, T__10 = 11, FROM = 12, SELECT = 13, AS = 14, 
+    WHERE = 15, ORDER_BY = 16, ASC = 17, DESC = 18, UNION = 19, INTERSECT = 20, 
+    EXCEPT = 21, ASSERT = 22, LIMIT = 23, OFFSET = 24, BETWEEN = 25, AND = 26, 
+    PIPE_OPERATOR = 27, IDENTIFIER = 28, STRING = 29, NUMBER = 30, WS = 31
   };
 
   enum {
@@ -24,8 +24,9 @@ public:
     RuleWhereOperator = 4, RuleOrderByOperator = 5, RuleUnionOperator = 6, 
     RuleIntersectOperator = 7, RuleExceptOperator = 8, RuleAssertOperator = 9, 
     RuleLimitClause = 10, RuleOffsetClause = 11, RuleSelectExpression = 12, 
-    RuleOrderExpression = 13, RuleBooleanExpression = 14, RulePayloadExpression = 15, 
-    RuleExpression = 16, RuleFunctionCall = 17, RuleLiteral = 18, RuleAliasClause = 19
+    RuleOrderExpression = 13, RuleBooleanExpression = 14, RuleComparisonOperator = 15, 
+    RulePayloadExpression = 16, RuleExpression = 17, RuleFunctionCall = 18, 
+    RuleLiteral = 19, RuleAliasClause = 20
   };
 
   explicit PipeQLParser(antlr4::TokenStream *input);
@@ -60,6 +61,7 @@ public:
   class SelectExpressionContext;
   class OrderExpressionContext;
   class BooleanExpressionContext;
+  class ComparisonOperatorContext;
   class PayloadExpressionContext;
   class ExpressionContext;
   class FunctionCallContext;
@@ -281,6 +283,7 @@ public:
     SelectExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     ExpressionContext *expression();
+    antlr4::tree::TerminalNode *AS();
     antlr4::tree::TerminalNode *IDENTIFIER();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -297,6 +300,8 @@ public:
     OrderExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     ExpressionContext *expression();
+    antlr4::tree::TerminalNode *ASC();
+    antlr4::tree::TerminalNode *DESC();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -313,6 +318,7 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<ExpressionContext *> expression();
     ExpressionContext* expression(size_t i);
+    ComparisonOperatorContext *comparisonOperator();
     antlr4::tree::TerminalNode *BETWEEN();
     antlr4::tree::TerminalNode *AND();
 
@@ -324,6 +330,20 @@ public:
   };
 
   BooleanExpressionContext* booleanExpression();
+
+  class  ComparisonOperatorContext : public antlr4::ParserRuleContext {
+  public:
+    ComparisonOperatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  ComparisonOperatorContext* comparisonOperator();
 
   class  PayloadExpressionContext : public antlr4::ParserRuleContext {
   public:

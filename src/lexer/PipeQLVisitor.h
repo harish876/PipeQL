@@ -49,6 +49,8 @@ public:
 
     virtual std::any visitBooleanExpression(PipeQLParser::BooleanExpressionContext *context) = 0;
 
+    virtual std::any visitComparisonOperator(PipeQLParser::ComparisonOperatorContext *context) = 0;
+
     virtual std::any visitPayloadExpression(PipeQLParser::PayloadExpressionContext *context) = 0;
 
     virtual std::any visitExpression(PipeQLParser::ExpressionContext *context) = 0;

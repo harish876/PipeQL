@@ -75,6 +75,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitComparisonOperator(PipeQLParser::ComparisonOperatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitPayloadExpression(PipeQLParser::PayloadExpressionContext *ctx) override {
     return visitChildren(ctx);
   }

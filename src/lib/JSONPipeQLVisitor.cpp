@@ -1,5 +1,8 @@
+#include "PipeQLParser.h"
 #include "PipeQLVisitor.h"
 #include "nlohmann/json.hpp"
+#include <string>
+#include <support/Any.h>
 
 class JSONPipeQLVisitor : public PipeQLVisitor {
 private:
@@ -44,19 +47,29 @@ public:
                                     const std::vector<nlohmann::json> &rows) {
     std::vector<std::string> columns;
     for (auto selectExpr : ctx->selectExpression()) {
-      std::string column = selectExpr->expression()->getText();
+      std::string column;
+      if (selectExpr->expression()) {
+        column = selectExpr->expression()->getText();
+      } else {
+        column = selectExpr->getText();
+      }
+      std::cout << "Column: " << column << std::endl;
       columns.push_back(column);
     }
 
     std::vector<nlohmann::json> result;
     for (const auto &row : rows) {
-      nlohmann::json tmp;
-      for (const auto &column : columns) {
-        if (row.contains(column)) {
-          tmp[column] = row[column];
+      if (columns.size() == 1 && columns[0] == "*") {
+        result.push_back(row);
+      } else {
+        nlohmann::json tmp;
+        for (const auto &column : columns) {
+          if (row.contains(column)) {
+            tmp[column] = row[column];
+          }
         }
+        result.push_back(tmp);
       }
-      result.push_back(tmp);
     }
 
     for (const auto &row : result) {
@@ -100,10 +113,11 @@ public:
 
   antlrcpp::Any visitWhereOperator(PipeQLParser::WhereOperatorContext *ctx,
                                    const std::vector<nlohmann::json> &rows) {
-    std::cout << "Evaluating WHERE condition..." << std::endl;
-
     auto booleanExpr = ctx->booleanExpression();
-    if (booleanExpr->getText().find("BETWEEN") != std::string::npos) {
+    std::string whereExpression = booleanExpr->getText();
+
+    if (whereExpression.find("BETWEEN") != std::string::npos ||
+        whereExpression.find("between") != std::string::npos) {
       auto columnExpr = booleanExpr->expression(0);     // Column name
       auto lowerBoundExpr = booleanExpr->expression(1); // Lower bound
       auto upperBoundExpr = booleanExpr->expression(2); // Upper bound
@@ -125,11 +139,71 @@ public:
           }
         }
       }
+      return filteredRows;
+    } else if (whereExpression.find(">") != std::string::npos) {
+      auto columnExpr = booleanExpr->expression(0); // Column name
+      auto expr = booleanExpr->expression(1);       // Upper bound
 
+      std::string column = columnExpr->getText();
+      int exprValue = std::stoi(expr->getText());
+      std::cout << "Filtering rows where " << column << " > " << exprValue
+                << std::endl;
+
+      // Filter rows based on the > condition
+      std::vector<nlohmann::json> filteredRows;
+      for (const auto &row : rows) {
+        if (row.contains(column)) {
+          int value = row[column];
+          if (value > exprValue) {
+            filteredRows.push_back(row);
+          }
+        }
+      }
+
+      return filteredRows;
+    } else if (whereExpression.find("==") != std::string::npos) {
+      auto columnExpr = booleanExpr->expression(0); // Column name
+      auto expr = booleanExpr->expression(1);       // Upper bound
+
+      std::string column = columnExpr->getText();
+      int exprValue = std::stoi(expr->getText());
+      std::cout << "Filtering rows where " << column << " > " << exprValue
+                << std::endl;
+
+      // Filter rows based on the > condition
+      std::vector<nlohmann::json> filteredRows;
+      for (const auto &row : rows) {
+        if (row.contains(column)) {
+          int value = row[column];
+          if (value == exprValue) {
+            filteredRows.push_back(row);
+          }
+        }
+      }
+
+      return filteredRows;
+    } else if (whereExpression.find("<") != std::string::npos) {
+      auto columnExpr = booleanExpr->expression(0); // Column name
+      auto expr = booleanExpr->expression(1);       // Upper bound
+
+      std::string column = columnExpr->getText();
+      int exprValue = std::stoi(expr->getText());
+      std::cout << "Filtering rows where " << column << " > " << exprValue
+                << std::endl;
+
+      // Filter rows based on the < condition
+      std::vector<nlohmann::json> filteredRows;
+      for (const auto &row : rows) {
+        if (row.contains(column)) {
+          int value = row[column];
+          if (value < exprValue) {
+            filteredRows.push_back(row);
+          }
+        }
+      }
       return filteredRows;
     }
 
-    // Handle other conditions (if any)
     return rows;
   }
 
@@ -204,6 +278,11 @@ public:
   }
   antlrcpp::Any
   visitAliasClause(PipeQLParser::AliasClauseContext *ctx) override {
+    return nullptr;
+  }
+
+  antlrcpp::Any visitComparisonOperator(
+      PipeQLParser::ComparisonOperatorContext *ctx) override {
     return nullptr;
   }
 };

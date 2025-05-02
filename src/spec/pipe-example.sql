@@ -216,3 +216,10 @@ FROM Orders
 GROUP BY year
 ORDER BY price DESC
 |> AGGREGATE COUNT(*), MIN(year), MAX(year);
+
+
+FROM lineitem
+|> EXTEND l_quantity * l_extendedprice AS cost
+|> EXTEND cost * l_discount AS discount
+|> WHERE discount > 1000
+|> AGGREGATE SUM(cost), SUM(discount)

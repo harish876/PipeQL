@@ -69,18 +69,28 @@ offsetClause
 
 // SELECT expression
 selectExpression
-    : expression ('AS' IDENTIFIER)?
+    : expression (AS IDENTIFIER)?
+    | '*'
     ;
 
 // ORDER BY expression
 orderExpression
-    : expression ('ASC' | 'DESC')?
+    : expression (ASC | DESC)?
     ;
 
 // Boolean expression
 booleanExpression
-    : expression
+    : expression comparisonOperator expression
     | expression BETWEEN expression AND expression
+    ;
+
+// Comparison operators
+comparisonOperator
+    : '=='  // Equal to
+    | '>'   // Greater than
+    | '<'   // Less than
+    | '>='   // Greater than or equal to
+    | '<='   // Less than or equal to
     ;
 
 // Payload expression for ASSERT
@@ -115,15 +125,17 @@ aliasClause
 // Tokens
 FROM         : [Ff][Rr][Oo][Mm];
 SELECT       : [Ss][Ee][Ll][Ee][Cc][Tt];
+AS           : [Aa][Ss];
 WHERE        : [Ww][Hh][Ee][Rr][Ee];
 ORDER_BY     : [Oo][Rr][Dd][Ee][Rr] [Bb][Yy];
+ASC          : [Aa][Ss][Cc];
+DESC         : [Dd][Ee][Ss][Cc];
 UNION        : [Uu][Nn][Ii][Oo][Nn];
 INTERSECT    : [Ii][Nn][Tt][Ee][Rr][Ss][Ee][Cc][Tt];
 EXCEPT       : [Ee][Xx][Cc][Ee][Pp][Tt];
 ASSERT       : [Aa][Ss][Ss][Ee][Rr][Tt];
 LIMIT        : [Ll][Ii][Mm][Ii][Tt];
 OFFSET       : [Oo][Ff][Ff][Ss][Ee][Tt];
-AS           : [Aa][Ss];
 BETWEEN      : [Bb][Ee][Tt][Ww][Ee][Ee][Nn];
 AND          : [Aa][Nn][Dd];
 PIPE_OPERATOR: '|>';

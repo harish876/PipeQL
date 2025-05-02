@@ -59,6 +59,9 @@ public:
   virtual void enterBooleanExpression(PipeQLParser::BooleanExpressionContext *ctx) = 0;
   virtual void exitBooleanExpression(PipeQLParser::BooleanExpressionContext *ctx) = 0;
 
+  virtual void enterComparisonOperator(PipeQLParser::ComparisonOperatorContext *ctx) = 0;
+  virtual void exitComparisonOperator(PipeQLParser::ComparisonOperatorContext *ctx) = 0;
+
   virtual void enterPayloadExpression(PipeQLParser::PayloadExpressionContext *ctx) = 0;
   virtual void exitPayloadExpression(PipeQLParser::PayloadExpressionContext *ctx) = 0;
 

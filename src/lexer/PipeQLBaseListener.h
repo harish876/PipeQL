@@ -61,6 +61,9 @@ public:
   virtual void enterBooleanExpression(PipeQLParser::BooleanExpressionContext * /*ctx*/) override { }
   virtual void exitBooleanExpression(PipeQLParser::BooleanExpressionContext * /*ctx*/) override { }
 
+  virtual void enterComparisonOperator(PipeQLParser::ComparisonOperatorContext * /*ctx*/) override { }
+  virtual void exitComparisonOperator(PipeQLParser::ComparisonOperatorContext * /*ctx*/) override { }
+
   virtual void enterPayloadExpression(PipeQLParser::PayloadExpressionContext * /*ctx*/) override { }
   virtual void exitPayloadExpression(PipeQLParser::PayloadExpressionContext * /*ctx*/) override { }
 

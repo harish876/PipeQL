@@ -6,6 +6,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(antlr4-runtime REQUIRED)
 find_package(antlr4 REQUIRED)
 find_package(nlohmann_json 3.10.5 REQUIRED)
+find_package(leveldb 1.23 REQUIRED)
 
 if(DEFINED antlr4_PACKAGE_FOLDER_DEBUG)
   set(antlr4Path ${antlr4_PACKAGE_FOLDER_DEBUG})
@@ -25,7 +26,7 @@ include_directories(
   src/lib
 )
 
-add_subdirectory(${CMAKE_SOURCE_DIR}/docstore ${CMAKE_BINARY_DIR}/docstore)
+# add_subdirectory(${CMAKE_SOURCE_DIR}/docstore ${CMAKE_BINARY_DIR}/docstore)
 
 set(SOURCES_STAGE
     src/main.cpp
@@ -52,7 +53,7 @@ add_custom_target(
   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src
   SOURCES ${PROJECT_SOURCE_DIR}/src/spec/PipeQL.g4)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${CONAN_LIBS} antlr4_static nlohmann_json::nlohmann_json docstore -pthread)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${CONAN_LIBS} antlr4_static nlohmann_json::nlohmann_json leveldb::leveldb -pthread)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
 

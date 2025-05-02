@@ -64,15 +64,16 @@ int main(int argc, const char *argv[]) {
       {"customers", customers},
   };
 
-  auto visitor = VisitorFactory::createVisitor(engine, data);
-  visitor->visitQuery(tree);
-
-  std::cout << "------------------------------------------------------"
-            << std::endl;
-
   if (is_print_ast) {
     std::cout << tree->toStringTree(true) << std::endl;
   }
+
+  std::cout << "---------------------------------------------------------------"
+               "---------"
+            << std::endl;
+
+  auto visitor = VisitorFactory::createVisitor(engine, data);
+  visitor->visitQuery(tree);
 
   return 0;
 }
