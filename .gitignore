@@ -1,6 +1,5 @@
 .cache
 .antlr
-.vscode
 build
 CMakeCache
 CMakeFiles
