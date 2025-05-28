@@ -34,42 +34,72 @@ set(ANTLR_EXECUTABLE /usr/local/bin/antlr4)
 # add macros to generate ANTLR Cpp code from grammar
 find_package(ANTLR REQUIRED)
 
-# Create lexer directory if it doesn't exist
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/lexer)
+# Create necessary directories
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/src/parser)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/include/pipeql/parser)
 
-# Call macro to add lexer and grammar to your build dependencies.
-antlr_target(PipeQL src/spec/PipeQL.g4 PARSER
-             PACKAGE pipeql
-             VISITOR
-             LISTENER
-             OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/lexer)
+# Generate ANTLR files
+set(ANTLR_OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/src/parser)
+set(GRAMMAR_FILE ${CMAKE_CURRENT_SOURCE_DIR}/src/grammar/PipeQL.g4)
+
+message(STATUS "Grammar file: ${GRAMMAR_FILE}")
+message(STATUS "Output directory: ${ANTLR_OUTPUT_DIR}")
+
+execute_process(
+    COMMAND ${ANTLR_EXECUTABLE} -Dlanguage=Cpp -visitor -listener -o ${ANTLR_OUTPUT_DIR} ${GRAMMAR_FILE}
+    RESULT_VARIABLE ANTLR_RESULT
+)
+
+if(NOT ANTLR_RESULT EQUAL 0)
+    message(FATAL_ERROR "Failed to generate ANTLR files")
+endif()
 
 # Include directories
 include_directories(
-    src/lexer
-    src/lib
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/src
+    ${ANTLR_OUTPUT_DIR}
 )
 
-# Source files
-set(SOURCES_STAGE
-    src/main.cpp
-    src/lexer/PipeQLLexer.cpp
-    src/lexer/PipeQLParser.cpp
-    src/lexer/PipeQLVisitor.cpp
-    src/lib/JSONPipeQLVisitor.cpp
-    src/lib/VisitorFactory.h
+# Copy generated headers to public include directory
+file(GLOB ANTLR_GENERATED_HEADERS
+    "${ANTLR_OUTPUT_DIR}/*.h"
+)
+file(COPY ${ANTLR_GENERATED_HEADERS} DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/src/include/pipeql/parser)
+
+# Source files for the library
+set(PIPEQL_LIB_SOURCES
+    ${ANTLR_OUTPUT_DIR}/PipeQLLexer.cpp
+    ${ANTLR_OUTPUT_DIR}/PipeQLParser.cpp
+    ${ANTLR_OUTPUT_DIR}/PipeQLVisitor.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/src/lib/JSONPipeQLVisitor.cpp
 )
 
-# Add executable
-add_executable(${PROJECT_NAME} ${SOURCES_STAGE})
+# Create library target
+add_library(pipeql STATIC ${PIPEQL_LIB_SOURCES})
 
-# Link libraries
-target_link_libraries(${PROJECT_NAME} PRIVATE
+# Set library properties
+set_target_properties(pipeql PROPERTIES
+    VERSION 1.0.0
+    SOVERSION 1
+    PUBLIC_HEADER "src/include/pipeql/parser/PipeQLParser.h;src/include/pipeql/parser/PipeQLVisitor.h;src/include/pipeql/lib/VisitorFactory.h"
+)
+
+# Link libraries to pipeql
+target_link_libraries(pipeql PUBLIC
     antlr4_static
     nlohmann_json::nlohmann_json
     leveldb::leveldb
     Threads::Threads
 )
 
-# Install target
-install(TARGETS ${PROJECT_NAME} DESTINATION ~/.local/bin)
+# Install library and headers
+install(TARGETS pipeql
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    PUBLIC_HEADER DESTINATION include/pipeql
+)
+
+# Example executable (optional)
+add_executable(pipeql_example src/examples/main.cpp)
+target_link_libraries(pipeql_example PRIVATE pipeql)

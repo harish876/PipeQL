@@ -3,7 +3,7 @@ set(ANTLR_VERSION @ANTLR_VERSION@)
 @PACKAGE_INIT@
 
 if (NOT ANTLR4_CPP_GENERATED_SRC_DIR)
-  set(ANTLR4_GENERATED_SRC_DIR ${CMAKE_BINARY_DIR}/antlr4_generated_src)
+  set(ANTLR4_GENERATED_SRC_DIR ${CMAKE_SOURCE_DIR}/src/include/pipeql/parser)
 endif()
 
 FIND_PACKAGE(Java COMPONENTS Runtime REQUIRED)
@@ -36,7 +36,7 @@ function(antlr4_generate
     Antlr4_GeneratorType
     )
 
-  set( Antlr4_GeneratedSrcDir ${ANTLR4_GENERATED_SRC_DIR}/${Antlr4_ProjectTarget} )
+  set( Antlr4_GeneratedSrcDir ${ANTLR4_GENERATED_SRC_DIR} )
 
   get_filename_component(Antlr4_InputFileBaseName ${Antlr4_InputFile} NAME_WE )
 
