@@ -9,6 +9,14 @@ cmake ..
 make
 ```
 
+## Generating Lexer Files
+```bash
+antlr4 -Dlanguage=Cpp -visitor -lib src/lexer -o src/lexer src/spec/PipeQL.g4
+
+#Patching the directory. To figure it out
+mv src/lexer/src/spec/* src/lexer/ && rm -r src/lexer/src
+```
+
 
 ## Example
 
