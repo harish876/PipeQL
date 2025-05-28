@@ -1,0 +1,602 @@
+[
+    {
+        "customer_id": 1,
+        "customer_name": "Customer 1",
+        "customer_age": 25,
+        "total_sales": 100
+    },
+    {
+        "customer_id": 2,
+        "customer_name": "Customer 2",
+        "customer_age": 30,
+        "total_sales": 200
+    },
+    {
+        "customer_id": 3,
+        "customer_name": "Customer 3",
+        "customer_age": 35,
+        "total_sales": 300
+    },
+    {
+        "customer_id": 4,
+        "customer_name": "Customer 4",
+        "customer_age": 40,
+        "total_sales": 400
+    },
+    {
+        "customer_id": 5,
+        "customer_name": "Customer 5",
+        "customer_age": 45,
+        "total_sales": 500
+    },
+    {
+        "customer_id": 6,
+        "customer_name": "Customer 6",
+        "customer_age": 50,
+        "total_sales": 600
+    },
+    {
+        "customer_id": 7,
+        "customer_name": "Customer 7",
+        "customer_age": 55,
+        "total_sales": 700
+    },
+    {
+        "customer_id": 8,
+        "customer_name": "Customer 8",
+        "customer_age": 60,
+        "total_sales": 800
+    },
+    {
+        "customer_id": 9,
+        "customer_name": "Customer 9",
+        "customer_age": 65,
+        "total_sales": 900
+    },
+    {
+        "customer_id": 10,
+        "customer_name": "Customer 10",
+        "customer_age": 70,
+        "total_sales": 1000
+    },
+    {
+        "customer_id": 11,
+        "customer_name": "Customer 11",
+        "customer_age": 26,
+        "total_sales": 110
+    },
+    {
+        "customer_id": 12,
+        "customer_name": "Customer 12",
+        "customer_age": 31,
+        "total_sales": 220
+    },
+    {
+        "customer_id": 13,
+        "customer_name": "Customer 13",
+        "customer_age": 36,
+        "total_sales": 330
+    },
+    {
+        "customer_id": 14,
+        "customer_name": "Customer 14",
+        "customer_age": 41,
+        "total_sales": 440
+    },
+    {
+        "customer_id": 15,
+        "customer_name": "Customer 15",
+        "customer_age": 46,
+        "total_sales": 550
+    },
+    {
+        "customer_id": 16,
+        "customer_name": "Customer 16",
+        "customer_age": 51,
+        "total_sales": 660
+    },
+    {
+        "customer_id": 17,
+        "customer_name": "Customer 17",
+        "customer_age": 56,
+        "total_sales": 770
+    },
+    {
+        "customer_id": 18,
+        "customer_name": "Customer 18",
+        "customer_age": 61,
+        "total_sales": 880
+    },
+    {
+        "customer_id": 19,
+        "customer_name": "Customer 19",
+        "customer_age": 66,
+        "total_sales": 990
+    },
+    {
+        "customer_id": 20,
+        "customer_name": "Customer 20",
+        "customer_age": 71,
+        "total_sales": 1100
+    },
+    {
+        "customer_id": 21,
+        "customer_name": "Customer 21",
+        "customer_age": 27,
+        "total_sales": 120
+    },
+    {
+        "customer_id": 22,
+        "customer_name": "Customer 22",
+        "customer_age": 32,
+        "total_sales": 240
+    },
+    {
+        "customer_id": 23,
+        "customer_name": "Customer 23",
+        "customer_age": 37,
+        "total_sales": 360
+    },
+    {
+        "customer_id": 24,
+        "customer_name": "Customer 24",
+        "customer_age": 42,
+        "total_sales": 480
+    },
+    {
+        "customer_id": 25,
+        "customer_name": "Customer 25",
+        "customer_age": 47,
+        "total_sales": 600
+    },
+    {
+        "customer_id": 26,
+        "customer_name": "Customer 26",
+        "customer_age": 52,
+        "total_sales": 720
+    },
+    {
+        "customer_id": 27,
+        "customer_name": "Customer 27",
+        "customer_age": 57,
+        "total_sales": 840
+    },
+    {
+        "customer_id": 28,
+        "customer_name": "Customer 28",
+        "customer_age": 62,
+        "total_sales": 960
+    },
+    {
+        "customer_id": 29,
+        "customer_name": "Customer 29",
+        "customer_age": 67,
+        "total_sales": 1080
+    },
+    {
+        "customer_id": 30,
+        "customer_name": "Customer 30",
+        "customer_age": 72,
+        "total_sales": 1200
+    },
+    {
+        "customer_id": 31,
+        "customer_name": "Customer 31",
+        "customer_age": 28,
+        "total_sales": 130
+    },
+    {
+        "customer_id": 32,
+        "customer_name": "Customer 32",
+        "customer_age": 33,
+        "total_sales": 260
+    },
+    {
+        "customer_id": 33,
+        "customer_name": "Customer 33",
+        "customer_age": 38,
+        "total_sales": 390
+    },
+    {
+        "customer_id": 34,
+        "customer_name": "Customer 34",
+        "customer_age": 43,
+        "total_sales": 520
+    },
+    {
+        "customer_id": 35,
+        "customer_name": "Customer 35",
+        "customer_age": 48,
+        "total_sales": 650
+    },
+    {
+        "customer_id": 36,
+        "customer_name": "Customer 36",
+        "customer_age": 53,
+        "total_sales": 780
+    },
+    {
+        "customer_id": 37,
+        "customer_name": "Customer 37",
+        "customer_age": 58,
+        "total_sales": 910
+    },
+    {
+        "customer_id": 38,
+        "customer_name": "Customer 38",
+        "customer_age": 63,
+        "total_sales": 1040
+    },
+    {
+        "customer_id": 39,
+        "customer_name": "Customer 39",
+        "customer_age": 68,
+        "total_sales": 1170
+    },
+    {
+        "customer_id": 40,
+        "customer_name": "Customer 40",
+        "customer_age": 73,
+        "total_sales": 1300
+    },
+    {
+        "customer_id": 41,
+        "customer_name": "Customer 41",
+        "customer_age": 29,
+        "total_sales": 140
+    },
+    {
+        "customer_id": 42,
+        "customer_name": "Customer 42",
+        "customer_age": 34,
+        "total_sales": 280
+    },
+    {
+        "customer_id": 43,
+        "customer_name": "Customer 43",
+        "customer_age": 39,
+        "total_sales": 420
+    },
+    {
+        "customer_id": 44,
+        "customer_name": "Customer 44",
+        "customer_age": 44,
+        "total_sales": 560
+    },
+    {
+        "customer_id": 45,
+        "customer_name": "Customer 45",
+        "customer_age": 49,
+        "total_sales": 700
+    },
+    {
+        "customer_id": 46,
+        "customer_name": "Customer 46",
+        "customer_age": 54,
+        "total_sales": 840
+    },
+    {
+        "customer_id": 47,
+        "customer_name": "Customer 47",
+        "customer_age": 59,
+        "total_sales": 980
+    },
+    {
+        "customer_id": 48,
+        "customer_name": "Customer 48",
+        "customer_age": 64,
+        "total_sales": 1120
+    },
+    {
+        "customer_id": 49,
+        "customer_name": "Customer 49",
+        "customer_age": 69,
+        "total_sales": 1260
+    },
+    {
+        "customer_id": 50,
+        "customer_name": "Customer 50",
+        "customer_age": 74,
+        "total_sales": 1400
+    },
+    {
+        "customer_id": 51,
+        "customer_name": "Customer 51",
+        "customer_age": 30,
+        "total_sales": 150
+    },
+    {
+        "customer_id": 52,
+        "customer_name": "Customer 52",
+        "customer_age": 35,
+        "total_sales": 300
+    },
+    {
+        "customer_id": 53,
+        "customer_name": "Customer 53",
+        "customer_age": 40,
+        "total_sales": 450
+    },
+    {
+        "customer_id": 54,
+        "customer_name": "Customer 54",
+        "customer_age": 45,
+        "total_sales": 600
+    },
+    {
+        "customer_id": 55,
+        "customer_name": "Customer 55",
+        "customer_age": 50,
+        "total_sales": 750
+    },
+    {
+        "customer_id": 56,
+        "customer_name": "Customer 56",
+        "customer_age": 55,
+        "total_sales": 900
+    },
+    {
+        "customer_id": 57,
+        "customer_name": "Customer 57",
+        "customer_age": 60,
+        "total_sales": 1050
+    },
+    {
+        "customer_id": 58,
+        "customer_name": "Customer 58",
+        "customer_age": 65,
+        "total_sales": 1200
+    },
+    {
+        "customer_id": 59,
+        "customer_name": "Customer 59",
+        "customer_age": 70,
+        "total_sales": 1350
+    },
+    {
+        "customer_id": 60,
+        "customer_name": "Customer 60",
+        "customer_age": 75,
+        "total_sales": 1500
+    },
+    {
+        "customer_id": 61,
+        "customer_name": "Customer 61",
+        "customer_age": 31,
+        "total_sales": 160
+    },
+    {
+        "customer_id": 62,
+        "customer_name": "Customer 62",
+        "customer_age": 36,
+        "total_sales": 320
+    },
+    {
+        "customer_id": 63,
+        "customer_name": "Customer 63",
+        "customer_age": 41,
+        "total_sales": 480
+    },
+    {
+        "customer_id": 64,
+        "customer_name": "Customer 64",
+        "customer_age": 46,
+        "total_sales": 640
+    },
+    {
+        "customer_id": 65,
+        "customer_name": "Customer 65",
+        "customer_age": 51,
+        "total_sales": 800
+    },
+    {
+        "customer_id": 66,
+        "customer_name": "Customer 66",
+        "customer_age": 56,
+        "total_sales": 960
+    },
+    {
+        "customer_id": 67,
+        "customer_name": "Customer 67",
+        "customer_age": 61,
+        "total_sales": 1120
+    },
+    {
+        "customer_id": 68,
+        "customer_name": "Customer 68",
+        "customer_age": 66,
+        "total_sales": 1280
+    },
+    {
+        "customer_id": 69,
+        "customer_name": "Customer 69",
+        "customer_age": 71,
+        "total_sales": 1440
+    },
+    {
+        "customer_id": 70,
+        "customer_name": "Customer 70",
+        "customer_age": 76,
+        "total_sales": 1600
+    },
+    {
+        "customer_id": 71,
+        "customer_name": "Customer 71",
+        "customer_age": 32,
+        "total_sales": 170
+    },
+    {
+        "customer_id": 72,
+        "customer_name": "Customer 72",
+        "customer_age": 37,
+        "total_sales": 340
+    },
+    {
+        "customer_id": 73,
+        "customer_name": "Customer 73",
+        "customer_age": 42,
+        "total_sales": 510
+    },
+    {
+        "customer_id": 74,
+        "customer_name": "Customer 74",
+        "customer_age": 47,
+        "total_sales": 680
+    },
+    {
+        "customer_id": 75,
+        "customer_name": "Customer 75",
+        "customer_age": 52,
+        "total_sales": 850
+    },
+    {
+        "customer_id": 76,
+        "customer_name": "Customer 76",
+        "customer_age": 57,
+        "total_sales": 1020
+    },
+    {
+        "customer_id": 77,
+        "customer_name": "Customer 77",
+        "customer_age": 62,
+        "total_sales": 1190
+    },
+    {
+        "customer_id": 78,
+        "customer_name": "Customer 78",
+        "customer_age": 67,
+        "total_sales": 1360
+    },
+    {
+        "customer_id": 79,
+        "customer_name": "Customer 79",
+        "customer_age": 72,
+        "total_sales": 1530
+    },
+    {
+        "customer_id": 80,
+        "customer_name": "Customer 80",
+        "customer_age": 77,
+        "total_sales": 1700
+    },
+    {
+        "customer_id": 81,
+        "customer_name": "Customer 81",
+        "customer_age": 33,
+        "total_sales": 180
+    },
+    {
+        "customer_id": 82,
+        "customer_name": "Customer 82",
+        "customer_age": 38,
+        "total_sales": 360
+    },
+    {
+        "customer_id": 83,
+        "customer_name": "Customer 83",
+        "customer_age": 43,
+        "total_sales": 540
+    },
+    {
+        "customer_id": 84,
+        "customer_name": "Customer 84",
+        "customer_age": 48,
+        "total_sales": 720
+    },
+    {
+        "customer_id": 85,
+        "customer_name": "Customer 85",
+        "customer_age": 53,
+        "total_sales": 900
+    },
+    {
+        "customer_id": 86,
+        "customer_name": "Customer 86",
+        "customer_age": 58,
+        "total_sales": 1080
+    },
+    {
+        "customer_id": 87,
+        "customer_name": "Customer 87",
+        "customer_age": 63,
+        "total_sales": 1260
+    },
+    {
+        "customer_id": 88,
+        "customer_name": "Customer 88",
+        "customer_age": 68,
+        "total_sales": 1440
+    },
+    {
+        "customer_id": 89,
+        "customer_name": "Customer 89",
+        "customer_age": 73,
+        "total_sales": 1620
+    },
+    {
+        "customer_id": 90,
+        "customer_name": "Customer 90",
+        "customer_age": 78,
+        "total_sales": 1800
+    },
+    {
+        "customer_id": 91,
+        "customer_name": "Customer 91",
+        "customer_age": 34,
+        "total_sales": 190
+    },
+    {
+        "customer_id": 92,
+        "customer_name": "Customer 92",
+        "customer_age": 39,
+        "total_sales": 380
+    },
+    {
+        "customer_id": 93,
+        "customer_name": "Customer 93",
+        "customer_age": 44,
+        "total_sales": 570
+    },
+    {
+        "customer_id": 94,
+        "customer_name": "Customer 94",
+        "customer_age": 49,
+        "total_sales": 760
+    },
+    {
+        "customer_id": 95,
+        "customer_name": "Customer 95",
+        "customer_age": 54,
+        "total_sales": 950
+    },
+    {
+        "customer_id": 96,
+        "customer_name": "Customer 96",
+        "customer_age": 59,
+        "total_sales": 1140
+    },
+    {
+        "customer_id": 97,
+        "customer_name": "Customer 97",
+        "customer_age": 64,
+        "total_sales": 1330
+    },
+    {
+        "customer_id": 98,
+        "customer_name": "Customer 98",
+        "customer_age": 69,
+        "total_sales": 1520
+    },
+    {
+        "customer_id": 99,
+        "customer_name": "Customer 99",
+        "customer_age": 74,
+        "total_sales": 1710
+    },
+    {
+        "customer_id": 100,
+        "customer_name": "Customer 100",
+        "customer_age": 79,
+        "total_sales": 1900
+    }
+]
