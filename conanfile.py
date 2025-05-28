@@ -17,7 +17,6 @@ class PipeQLConan(ConanFile):
         "antlr4/4.13.1",
         "openjdk/21.0.1",
         "nlohmann_json/3.10.5",
-        "docstore/0.0.1",
         "leveldb/1.23"
     )
 
