@@ -1,6 +1,15 @@
 # PipeQL
 Piped SQL DSL with MLIR lowering
 
+## Install Dependencies
+
+```bash
+sudo apt-get install libleveldb-dev
+sudo apt-get install nlohmann-json3-dev
+```
+
+Todo: Fix this to in tree dependency.
+
 ## Building the project
 ```bash
 mkdir -p build 
