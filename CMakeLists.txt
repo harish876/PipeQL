@@ -1,33 +1,56 @@
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR )
+# minimum required CMAKE version
+CMAKE_MINIMUM_REQUIRED(VERSION 3.7 FATAL_ERROR)
 
-project (pipeql)
+# Set project name
+project(pipeql)
 
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
+# compiler must be 17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-find_package(antlr4-runtime REQUIRED)
-find_package(antlr4 REQUIRED)
+
+
+# required if linking to static library
+add_definitions(-DANTLR4CPP_STATIC)
+
+# using /MD flag for antlr4_runtime (for Visual C++ compilers only)
+set(ANTLR4_WITH_STATIC_CRT OFF)
+
+# Find required packages
+find_package(Threads REQUIRED)
 find_package(nlohmann_json 3.10.5 REQUIRED)
 find_package(leveldb 1.23 REQUIRED)
 
-if(DEFINED antlr4_PACKAGE_FOLDER_DEBUG)
-  set(antlr4Path ${antlr4_PACKAGE_FOLDER_DEBUG})
-else()
-  set(antlr4Path ${antlr4_PACKAGE_FOLDER_RELEASE})
-endif()
+# add external build for antlrcpp
+include(ExternalAntlr4Cpp)
+# add antlr4cpp artifacts to project environment
+include_directories(${ANTLR4_INCLUDE_DIRS})
 
-if(DEFINED openjdk_BIN_DIRS_DEBUG)
-  set(javaPath ${openjdk_BIN_DIRS_DEBUG})
-else()
-  set(javaPath ${openjdk_BIN_DIRS_RELEASE})
-endif()
+# set variable pointing to the antlr tool that supports C++
+set(ANTLR_EXECUTABLE /usr/local/bin/antlr4)
 
+# add macros to generate ANTLR Cpp code from grammar
+find_package(ANTLR REQUIRED)
+
+# Create lexer directory if it doesn't exist
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/lexer)
+
+# Call macro to add lexer and grammar to your build dependencies.
+antlr_target(PipeQL src/spec/PipeQL.g4 PARSER
+             PACKAGE pipeql
+             VISITOR
+             LISTENER
+             OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/lexer)
+
+# Include directories
 include_directories(
-  ${antlr4-runtime_INCLUDE_DIR}
-  src/lexer
-  src/lib
+    src/lexer
+    src/lib
 )
 
-# add_subdirectory(${CMAKE_SOURCE_DIR}/docstore ${CMAKE_BINARY_DIR}/docstore)
-
+# Source files
 set(SOURCES_STAGE
     src/main.cpp
     src/lexer/PipeQLLexer.cpp
@@ -37,24 +60,16 @@ set(SOURCES_STAGE
     src/lib/VisitorFactory.h
 )
 
+# Add executable
+add_executable(${PROJECT_NAME} ${SOURCES_STAGE})
 
-message(STATUS "CMAKE_PREFIX_PATH: ${CMAKE_PREFIX_PATH}")
-message(STATUS "antlr4Path: ${antlr4Path}")
-message(STATUS "javaPath: ${javaPath}")
+# Link libraries
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    antlr4_static
+    nlohmann_json::nlohmann_json
+    leveldb::leveldb
+    Threads::Threads
+)
 
-add_executable(${PROJECT_NAME} ${SOURCES_STAGE} )
-
-add_custom_target(
-  grammar
-  COMMAND
-    ${javaPath}/java -classpath ${antlr4Path}/res/antlr-complete.jar
-    org.antlr.v4.Tool -o ${PROJECT_SOURCE_DIR}/src/lexer -lib ${PROJECT_SOURCE_DIR}/src/lexer -encoding UTF-8
-    -Dlanguage=Cpp -no-listener -no-visitor ${PROJECT_SOURCE_DIR}/src/spec/PipeQL.g4
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/src
-  SOURCES ${PROJECT_SOURCE_DIR}/src/spec/PipeQL.g4)
-
-target_link_libraries(${PROJECT_NAME} PRIVATE ${CONAN_LIBS} antlr4_static nlohmann_json::nlohmann_json leveldb::leveldb -pthread)
-
-set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
-
+# Install target
 install(TARGETS ${PROJECT_NAME} DESTINATION ~/.local/bin)
