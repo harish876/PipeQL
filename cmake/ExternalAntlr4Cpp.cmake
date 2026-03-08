@@ -35,8 +35,15 @@ if(MSVC)
   set(ANTLR4_RUNTIME_LIBRARIES
       ${ANTLR4_OUTPUT_DIR}/antlr4-runtime.dll)
 else()
-  set(ANTLR4_STATIC_LIBRARIES
-      ${ANTLR4_OUTPUT_DIR}/libantlr4-runtime.a)
+  # antlr4-cpp-runtime (e.g. 4.7.x) outputs static libs into "dist/"
+  # instead of "runtime/" on Unix-like builds.
+  if(UNIX)
+    set(ANTLR4_STATIC_LIBRARIES
+        ${ANTLR4_ROOT}/runtime/Cpp/dist/libantlr4-runtime.a)
+  else()
+    set(ANTLR4_STATIC_LIBRARIES
+        ${ANTLR4_OUTPUT_DIR}/libantlr4-runtime.a)
+  endif()
   if(MINGW)
     set(ANTLR4_SHARED_LIBRARIES
         ${ANTLR4_OUTPUT_DIR}/libantlr4-runtime.dll.a)

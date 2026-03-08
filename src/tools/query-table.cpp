@@ -30,13 +30,13 @@ class InterpreterPipeQLVisitor : public PipeQLBaseVisitor {
    antlrcpp::Any visitQuery(PipeQLParser::QueryContext* ctx) override {
       auto fromResult = visit(ctx->fromClause());
       try {
-         std::string tableName = std::any_cast<std::string>(fromResult);
+         std::string tableName = fromResult.as<std::string>();
          currentTable = loadTable(tableName);
          if (!currentTable) {
             std::cerr << "Table '" << tableName << "' not found in database." << std::endl;
             return nullptr;
          }
-      } catch (const std::bad_any_cast& e) {
+      } catch (const std::bad_cast& e) {
          return nullptr;
       }
 
@@ -44,16 +44,16 @@ class InterpreterPipeQLVisitor : public PipeQLBaseVisitor {
          if (op->whereOperator()) {
             auto result = visitWhereOperator(op->whereOperator());
             try {
-               currentTable = std::any_cast<std::shared_ptr<arrow::Table>>(result);
-            } catch (const std::bad_any_cast& e) {
+               currentTable = result.as<std::shared_ptr<arrow::Table>>();
+            } catch (const std::bad_cast& e) {
                continue;
             }
          }
          if (op->selectOperator()) {
             auto result = visitSelectOperator(op->selectOperator());
             try {
-               currentTable = std::any_cast<std::shared_ptr<arrow::Table>>(result);
-            } catch (const std::bad_any_cast& e) {
+               currentTable = result.as<std::shared_ptr<arrow::Table>>();
+            } catch (const std::bad_cast& e) {
                continue;
             }
          }
@@ -187,11 +187,11 @@ class InterpreterPipeQLVisitor : public PipeQLBaseVisitor {
          auto right = visit(ctx->expression(1));
 
          try {
-            std::string opStr = std::any_cast<std::string>(op);
-            std::string leftStr = std::any_cast<std::string>(left);
-            std::string rightStr = std::any_cast<std::string>(right);
+            std::string opStr = op.as<std::string>();
+            std::string leftStr = left.as<std::string>();
+            std::string rightStr = right.as<std::string>();
             return std::make_tuple(leftStr, rightStr, opStr);
-         } catch (const std::bad_any_cast& e) {
+         } catch (const std::bad_cast& e) {
             return nullptr;
          }
       }
@@ -578,14 +578,14 @@ int main(int argc, char** argv) {
       std::cerr << "Query execution time: " << duration.count() << " microseconds" << std::endl;
 
       try {
-         auto table = std::any_cast<std::shared_ptr<arrow::Table>>(result);
+         auto table = result.as<std::shared_ptr<arrow::Table>>();
          if (table) {
             printTable(table);
          } else {
             std::cerr << "Error: Query execution failed" << std::endl;
             return 1;
          }
-      } catch (const std::bad_any_cast& e) {
+      } catch (const std::bad_cast& e) {
          std::cerr << "Error: Failed to process query result" << std::endl;
          return 1;
       }

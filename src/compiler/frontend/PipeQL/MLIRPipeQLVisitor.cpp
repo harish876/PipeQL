@@ -43,9 +43,9 @@ std::pair<mlir::Value, TargetInfo> MLIRPipeQLVisitor::translateSelectStmt(mlir::
    mlir::Value tree;
    if (ctx->fromClause()) {
       try {
-         tableName = std::any_cast<std::string>(visitFromClause(ctx->fromClause()));
+         tableName = visitFromClause(ctx->fromClause()).as<std::string>();
          currentTable = tableName;
-      } catch (const std::bad_any_cast& e) {
+      } catch (const std::bad_cast& e) {
          std::cerr << "Error: Failed to get table name from FROM clause" << std::endl;
          std::cerr << "Details: " << e.what() << std::endl;
          return std::make_pair(tree, targetInfo);
@@ -312,8 +312,8 @@ antlrcpp::Any MLIRPipeQLVisitor::visitQuery(PipeQLParser::QueryContext* ctx) {
    std::string tableName;
    if (ctx->fromClause()) {
       try {
-         tableName = std::any_cast<std::string>(visitFromClause(ctx->fromClause()));
-      } catch (const std::bad_any_cast& e) {
+         tableName = visitFromClause(ctx->fromClause()).as<std::string>();
+      } catch (const std::bad_cast& e) {
          std::cerr << "Error: Failed to get table name from FROM clause" << std::endl;
          std::cerr << "Details: " << e.what() << std::endl;
          return antlrcpp::Any();
